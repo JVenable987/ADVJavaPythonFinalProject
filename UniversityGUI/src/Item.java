@@ -15,7 +15,7 @@ public class Item {
     private String model;
 
     // Constructor for Item     (STILL NEEDS STOCKER AFTER productID)
-    public Item(int productID, String type, int quantity, int price, String manufacturer, String model){
+    public Item(int productID, String type, int quantity, float price, String manufacturer, String model){
         this.productID = productID;
         this.type = type;
         this.quantity = quantity;
@@ -52,7 +52,7 @@ public class Item {
         this.model = model;
     }
 
-    // NEEDS ToString()
+    // Needs Stocker still after Stocker class added ToString()
     public String toString(){
         return String.format("ID: %d | Type: %s | Quantity: %d | Price: $%.2f | Manufacturer: %s | Model: %s",
                 this.getProductID(), this.getType(), this.getQuantity(), this.getPrice(), this.getManufacturer(), this.getModel());
