@@ -2,24 +2,21 @@
 
 import edu.cudenver.university.Course;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-
 public class Item {
     private int productID;                    // Haven't made const yet (static)
     //private static Stocker stockerAdded;    // Stocker class not defined yet
     private String type;
     private int quantity;
-    private float price;            // Changed it to float, not updated on the UML
+    private double price;                     // Changed to double, not updated on the UML
     private String manufacturer;
     private String model;
 
     // Constructor for Item     (STILL NEEDS STOCKER AFTER productID)
-    public Item(int productID, String type, int quantity, float price, String manufacturer, String model){
+    public Item(int productID, String type, int quantity, double price, String manufacturer, String model){
         this.productID = productID;
         this.type = type;
-        this.quantity = quantity;
-        this.price = price;
+        this.setQuantity(quantity);
+        this.setPrice(price);
         this.manufacturer = manufacturer;
         this.model = model;
     }
@@ -33,13 +30,21 @@ public class Item {
     }
 
     public int getQuantity() { return quantity; }
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantity(int quantity) throws IllegalArgumentException {
+        if (quantity >= 0){
+            this.quantity = quantity;
+        } else {
+            throw new IllegalArgumentException("Cannot have a negative quantity for an Item!");
+        }
     }
 
-    public float getPrice() { return price; }
-    public void setPrice(int price) {
-        this.price = price;
+    public double getPrice() { return price; }
+    public void setPrice(double price) throws IllegalArgumentException {
+        if (price >= 0){
+            this.price = price;
+        } else {
+            throw new IllegalArgumentException("Cannot have a negative price for an Item!");
+        }
     }
 
     public String getManufacturer() { return manufacturer; }
@@ -54,7 +59,7 @@ public class Item {
 
     // Needs Stocker still after Stocker class added ToString()
     public String toString(){
-        return String.format("ID: %d | Type: %s | Quantity: %d | Price: $%.2f | Manufacturer: %s | Model: %s",
+        return String.format("ITEM: [ID: %d | Type: %s | Quantity: %d | Price: $%.2f | Manufacturer: %s | Model: %s]",
                 this.getProductID(), this.getType(), this.getQuantity(), this.getPrice(), this.getManufacturer(), this.getModel());
     }
 
