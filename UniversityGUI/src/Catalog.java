@@ -3,13 +3,13 @@
 import java.util.ArrayList;
 
 public class Catalog {
-    private ArrayList<Catalog> items;       // the catalog is composed of various items
+    private ArrayList<Item> items;       // the catalog is composed of various items
 
     public Catalog(){
         this.items = new ArrayList<>();
     }
 
-    public ArrayList<Catalog> getItemsInCatalog() { return items; }
-    public void setItemsInCatalog(ArrayList<Catalog> items) { this.items = items; }
+    public ArrayList<Item> getItemsInCatalog() { return items; }
+    public void setItemsInCatalog(ArrayList<Item> items) { this.items = items; }
 
 }   // end class Catalog
