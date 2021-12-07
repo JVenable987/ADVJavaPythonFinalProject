@@ -8,13 +8,13 @@ public class Order {
 
     public Order(String orderNumber) {
         this.orderNumber = orderNumber;
-        this.lines = new ArrayList<OrderLines>();
+        this.lines = new ArrayList<OrderLine>();
     }
 
     public Order(String orderNumber, LocalDate date){
         this.orderNumber = orderNumber;
         this.date = date;
-        this.lines = new Arraylist<>();
+        this.lines = new ArrayList<>();
     }
 
     public double total(){
