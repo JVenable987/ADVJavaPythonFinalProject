@@ -1,26 +1,33 @@
 import Item
+
 class OrderLine:
     #private Item item;
     #private int quantity;
 
-    def __init__(self, item:Item, quantity:int):
-        self.item = item
-        self.quantity = quantity
+    def __init__(self, item: Item, quantity: int):
+        self._item = item
+        self._quantity = quantity
 
-    def subTotal(self):
-        return self.item.getPrice() * self.quantity
+    def sub_total(self):
+        return self.item.price * self._quantity
 
-    def toString(self):
-        return str("Line:{%5d x %s = $%10.2f}",self.getQuantity(),self.getItem(), self.subTotal())
+    def __str__(self):
+        return "Line: {} x {} = ${10.2f} ", self._quantity, self._item, self.sub_total()
 
-    def getItem(self):
-        return self.item
+    @property
+    def item(self):
+        """Return the item"""
+        return self._item
 
-    def setItem(self, item:Item):
-        self.item = item
+    @item.setter
+    def item(self, item: Item):
+        """Set the item"""
+        self._item = item
+        
+    @property
+    def quantity(self):
+        return self._quantity
 
-    def getQuantity(self):
-        return self.quantity
-
-    def setQuantity(self, quantity:int):
-        self.quantity = quantity
+    @quantity.setter
+    def quantity(self, quantity: int):
+        self._quantity = quantity
