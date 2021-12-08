@@ -22,12 +22,12 @@ class Item:
         """Return the type"""
         return self._type
 
-    @property                     
+    @property
     def quantity(self):
         """Return the quantity"""
         return self._quantity
 
-    @quantity.setter                
+    @quantity.setter
     def quantity(self, the_quantity):
         """Set the quantity"""
         if the_quantity >= 0:
@@ -60,5 +60,5 @@ class Item:
 
     def __str__(self):
         """String representation of an Item object"""
-        return "ITEM: [ID: {} | Type: %s | Quantity: %d | Price: $%.2f | Manufacturer: %s | Model: %s]".format(
+        return "ITEM: [ID: {} | Type: {} | Quantity: {} | Price: {} | Manufacturer: {} | Model: {}]".format(
             self._product_id, self._type, self._quantity, self._price, self._manufacturer, self._model)
