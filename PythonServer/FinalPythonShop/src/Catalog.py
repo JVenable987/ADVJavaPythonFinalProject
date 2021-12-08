@@ -1,29 +1,27 @@
-// Catalog contains all the Items in the system
+#// Catalog contains all the Items in the system
 
-import java.util.ArrayList;
+#import java.util.ArrayList;
+import Item
 
-public class Catalog {
-    private ArrayList<Item> items;
+class Catalog:
+    items = None
 
-    public Catalog(){
-        this.items = new ArrayList<>();
-    }
+    def __init__(self):
+        self.items = list();
 
-    public ArrayList<Item> getItems() { return items; }
-    public void setItems(ArrayList<Item> items) { this.items = items; }
+    def getItems(self):
+        return self.items
 
-    public void addItem(Item item) {
-        this.items.add(item);
-    }
+    def setItems(self, items:list):
+        self.items = items
 
-    public void showCatalog(){
-        // to show everything that is in the catalog (should be all items)
-        for (Item i: items){
-            System.out.println(i);
-        }
-    }
+    def addItem(self , item:Item):
+        self.items.append(item)
 
-    public void sizeOfCatalog(){
-        System.out.println("Catalog has: " + items.size() + " items");
-    }
-}
+    def showCatalog(self):
+        # to show everything that is in the catalog (should be all items)
+        for i in self.items:
+            print(i)
+
+    def sizeOfCatalog(self):
+        print("Catalog has: " + len(self.items) + " items")
