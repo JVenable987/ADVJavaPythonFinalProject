@@ -12,7 +12,7 @@ class OrderLine:
         return self.item.price * self._quantity
 
     def __str__(self):
-        return "Line: {} x {} = ${10.2f} ", self._quantity, self._item, self.sub_total()
+        return "Line: {} x {} = ${} ".format(self._quantity, self._item, self.sub_total())
 
     @property
     def item(self):
