@@ -14,30 +14,35 @@ class Item:
 
         @property
         def product_id(self):
-            """Return the productID"""
+            """Return the product_id"""
             return self._product_id
 
         @property
         def type(self):
+            """Return the type"""
             return self._type
 
-        @property                       # getter for quantity
+        @property                      
         def quantity(self):
+            """Return the quantity"""
             return self._quantity
 
-        @quantity.setter                # setter for quantity
+        @quantity.setter              
         def quantity(self, the_quantity):
+            """Setter for quantity"""
             if the_quantity >= 0:
                 self._quantity = quantity
             else:
                 raise ValueError('quantity must be a non-negative quantity')
 
-        @property                       # getter for price
+        @property                     
         def price(self):
+            """Return the price"""
             return self._price
 
-        @price.setter                   # setter for price
+        @price.setter                 
         def price(self, the_price):
+            """Setter for price"""
             if the_price >= 0:
                 self._price = price
             else:
@@ -45,12 +50,14 @@ class Item:
 
         @property
         def manufacturer(self):
+            """Return the manufacturer"""
             return  self._manufacturer
 
         @property
         def model(self):
+            """Return the model"""
             return  self._model
 
-                def __str__(self):
+        def __str__(self):
             return "".format(
                 f"ITEM: [ID: {self._product_id} | Type: {self._type} | Quantity: {self._quantity} | Price: {self._price} | Manufacturer: {self._manufacturer} | Model: {self._model}]")
