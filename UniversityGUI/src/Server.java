@@ -96,9 +96,23 @@ public class Server implements Runnable{
         }
 
         String output = "";
+        String customerName, productName, quantity;
+        Item product;
         if (keepClientRunning) {
             try {
                 System.out.println("CLIENT SAID>>>" + clientMessage);
+
+                String[] args = clientMessage.split("|");
+                switch(args[0]) {
+                    case 0:
+                        for(Customer tempCustomer: this.customers){
+                            if(tempCustomer.getUserName == args[1]) {
+                                Item product = new Item(args[2], args[3])
+                                tempCustomer.shoppingCart.cartList.add(prodcut);
+                            }
+                        }
+                }
+                /*
                 if (clientMessage.charAt(0) == 'E' && clientMessage.charAt(1) == '|') {
                     output = this.m1.encode(clientMessage.substring(2));
                 } else if (clientMessage.charAt(0) == 'D' && clientMessage.charAt(1) == '|') {
@@ -109,6 +123,8 @@ public class Server implements Runnable{
                 if (output == "")
                     return "2|Invalid Message Format";
                 return "0|" + output;
+                */
+                 */
             } catch (NullPointerException npe) {
                 npe.printStackTrace();
             }
