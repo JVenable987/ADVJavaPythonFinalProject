@@ -1,50 +1,57 @@
-#import java.time.LocalDate;
-#import java.util.ArrayList;
 import OrderLine
+import datetime as LocalDate    # for LocalDate
+
 
 class Order:
-    #private LocalDate date;
-    #private String orderNumber;
-    #private ArrayList<OrderLine> lines;
+    # private LocalDate date;
+    # private String orderNumber;
+    # private ArrayList<OrderLine> lines;
 
-    def __init__(self, orderNumber:str, date=None):
-        self.orderNumber = orderNumber
-        self.date = date
-        self.lines = list()
+    def __init__(self, order_number: str, date: LocalDate):
+        self._order_number = order_number
+        self._date = date
+        self._lines = list()
 
     def total(self):
-        #//TODO
-        total= 0;
-        for ol in self.lines:
+        # //TODO
+        total = 0
+        for ol in self._lines:
             total += ol.subTotal()
         return total
 
-    def toString(self):
-        #todo: make sure this works
+    def ___str__(self):
+        # todo: make sure this works
         sb = ""
         sb += "------------------------------------------------------------------------------------------------------------\n"
-        sb += str("Order:[%-20s|%-10s]\n",self.getOrderNumber(),self.getDate())
+        sb += str("Order:[{-20s|%-10s]\n", self._order_number, self._date)
         for line in self.lines:
-            sb+= str("--->%-50s\n",line.toString())
-        sb += str("---> Order Total: $%10.2f\n", self.total())
+            sb += str("--->%-50s\n", line.toString())
+        sb += str("---> Order Total: ${10.2f}\n", self.total())
         sb += "============================================================================================================"
         return sb
 
-    def getDate(self):
-        return self.date
+    @property
+    def date(self):
+        """Return the date"""
+        return self._date
 
-    #todo:update LocalDate
-    def setDate(self, date:LocalDate):
-        self.date = date
+    @date.setter
+    def date(self, the_date):
+        """Set the date"""
+        self._date = the_date
 
-    def getOrderNumber(self):
-        return self.orderNumber
+    @property
+    def order_number(self):
+        return self._order_number
 
-    def setOrderNumber(self, orderNumber:str):
-        self.orderNumber = orderNumber
+    @order_number.setter
+    def order_number(self, the_order_number: str):
+        self._order_number = the_order_number
 
-    def getLines(self):
-        return self.lines
+    @property
+    def lines(self):
+        return self._lines
 
-    def setLines(self, lines:list):
-        self.lines = lines
+    @lines.setter
+    def lines(self, the_lines: list):
+        self._lines = the_lines
