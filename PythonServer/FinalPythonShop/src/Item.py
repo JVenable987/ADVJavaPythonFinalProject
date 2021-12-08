@@ -51,6 +51,6 @@ class Item:
         def model(self):
             return  self._model
 
-        def __str__(self):
-            return "".format("ITEM: [ID: %d | Type: %s | Quantity: %d | Price: $%.2f | Manufacturer: %s | Model: %s]".format(
-                self._product_id, self._type, self._quantity, self._price, self._manufacturer, self._model))
+                def __str__(self):
+            return "".format(
+                f"ITEM: [ID: {self._product_id} | Type: {self._type} | Quantity: {self._quantity} | Price: {self._price} | Manufacturer: {self._manufacturer} | Model: {self._model}]")
