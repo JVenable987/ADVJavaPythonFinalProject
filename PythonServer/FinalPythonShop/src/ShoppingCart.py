@@ -13,6 +13,9 @@ class ShoppingCart:
     def __init__(self):
         self.cartList = list   #// assumed to have a capacity of 100 items
 
+    def add_item_to_cart(self, item):
+        self.cartList.add(item)
+
     def get_cart_list(self):
         return self.cartList
 

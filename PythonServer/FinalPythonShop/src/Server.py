@@ -35,6 +35,12 @@ class Server:
             if customer.username == name:
                 return customer
 
+    def get_item_from_id(self, id):
+        for item in self.catalog.items:
+            if item.product_id == id:
+                return item
+
+
     def order_number_ticker(self, ):
         this_order_number = self.order_number
         self.order_number = self.order_number + 1
@@ -60,11 +66,16 @@ class Server:
                     new_customer = Customer(args[1], args[2], args[3])
                     self.add_customer_to_customer_list(new_customer)
                 elif args[0] == 1:
-                    check_out_customer = self.get_customer_from_name(args[2])
+                    check_out_customer = self.get_customer_from_name(args[1])
                     order = check_out_customer.checkout(self.order_number_ticker)
                     client_socket.send(order.order_number)
                     self.add_order_to_order_list(order)
-
+                elif args[0] == 2:
+                    customer_to_add_to_cart = self.get_customer_from_name(args[1])
+                    item_to_add = Item()
+                    item_to_add = self.get_item_from_id(args[2])
+                    item_to_add.quantity(args[3])
+                    customer_to_add_to_cart.shopping_cart.add_item_to_cart(item_to_add)
 
 
 
