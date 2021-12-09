@@ -22,6 +22,9 @@ class Customer:
         self._shopping_cart = ShoppingCart()
         return order
 
+    def empty_shopping_cart(self):
+        self._shopping_cart = ShoppingCart()
+
     @property
     def username(self):
         return self._userName

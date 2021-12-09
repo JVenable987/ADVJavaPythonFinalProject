@@ -16,6 +16,14 @@ class ShoppingCart:
     def add_item_to_cart(self, item):
         self.cartList.add(item)
 
+    def get_total(self):
+        total = 0
+        for item in self.cartList:
+            total += item.price * item.quantity
+        return total
+
+
+
     def get_cart_list(self):
         return self.cartList
 

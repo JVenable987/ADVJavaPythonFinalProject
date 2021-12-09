@@ -76,6 +76,24 @@ class Server:
                     item_to_add = self.get_item_from_id(args[2])
                     item_to_add.quantity(args[3])
                     customer_to_add_to_cart.shopping_cart.add_item_to_cart(item_to_add)
+                elif args[0] == 3:
+                    item_to_add_to_catalog = Item(args[1], args[2], args[3], args[4], args[5], args[6], args[7])
+                    self.catalog.add_item(item_to_add_to_catalog)
+                elif args[0] == 4:
+                    for item in self.catalog.items:
+                        client_socket.send(item.str().encode("UTF-16"))
+                elif args[0] == 5:
+                    self.get_customer_from_name(args[1]).empty_shopping_cart()
+                elif args[0] == 6:
+                    client_socket.send(str(self.get_customer_from_name(args[1]).shopping_cart().get_total())
+                                       .encode("UTF-16"))
+                elif args[0] ==7 :
+                    cart_to_remove_items = self.get_customer_from_name(args[1]).shopping_cart().get_cart_list();
+                    for item_to_remove in cart_to_remove_items:
+                        if item_to_remove.product_id() == args[2]:
+                            item_to_remove.quantity(item_to_remove.quantity() - args[3])
+                            client_socket.send("items removed".encode("UTF-16"))
+
 
 
 
