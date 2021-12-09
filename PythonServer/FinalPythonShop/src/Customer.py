@@ -9,34 +9,42 @@ class Customer:
     #private ShoppingCart shoppingCart;
 
     # Customer constructor
-    def __init__(self, userName:str, password:str, isStocker:bool, shoppingCart:ShoppingCart):
-        self.userName = userName
-        self.password = password
-        self.isStocker = isStocker
-        self.shoppingCart = shoppingCart
+    def __init__(self, username: str, password: str, is_stocker: bool, shopping_cart: ShoppingCart):
+        self._username = username
+        self._password = password
+        self._is_stocker = is_stocker
+        self._shopping_cart = shopping_cart
 
-    def getUserName(self):
-        return self.userName
+    @property
+    def username(self):
+        return self._userName
 
-    def setUserName(self, userName:str):
-        self.userName = userName
+    @username.setter
+    def username(self, username: str):
+        self._username = username
 
-    def getPassword(self):
-        return self.password
+    @property
+    def password(self):
+        return self._password
 
-    def setPassword(self, password:str):
-        self.password = password
+    @password.setter
+    def password(self, password: str):
+        self._password = password
 
-    def getIsStocker(self):
-        return self.isStocker
+    @property
+    def is_stocker(self):
+        return self._is_stocker
 
-    def setIsStocker(self, isStocker:bool):
-        self.isStocker = isStocker
+    @is_stocker.setter
+    def is_stocker(self, is_stocker: bool):
+        self.is_stocker = is_stocker
 
-    def getShoppingCart(self):
-        return self.shoppingCart
+    @property
+    def shopping_cart(self):
+        return self._shoppingCart
 
-    def setShoppingCart(self, shoppingCart:ShoppingCart):
-        self.shoppingCart = shoppingCart
+    @shopping_cart.setter
+    def shopping_cart(self, shopping_cart: ShoppingCart):
+        self._shopping_cart = shopping_cart
 
     #// addItemToCart(int pid) void
