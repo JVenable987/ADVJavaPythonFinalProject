@@ -13,7 +13,7 @@ class Server:
         self.__port = port
         self.__backlog = backlog
         self.__keep_running = True
-        self.catalog = Catalog()
+        self.catalog = Catalog.Catalog()
         self.customer_list = []
         self.order_list = []
         self.order_number = 0
