@@ -20,7 +20,7 @@ class Order:
         return total
 
     def add_item_to_order(self, item):
-        self._lines.add(item)
+        self._lines.append(item)
 
     def ___str__(self):
         # todo: make sure this works

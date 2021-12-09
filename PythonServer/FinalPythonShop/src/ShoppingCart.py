@@ -14,7 +14,7 @@ class ShoppingCart:
         self.cartList = list   #// assumed to have a capacity of 100 items
 
     def add_item_to_cart(self, item):
-        self.cartList.add(item)
+        self.cartList.append(item)
 
     def get_total(self):
         total = 0

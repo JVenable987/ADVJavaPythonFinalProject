@@ -19,10 +19,10 @@ class Server:
         self.order_number = 0
 
     def add_customer_to_customer_list(self, customer):
-        self.customer_list.add(customer);
+        self.customer_list.append(customer);
 
     def add_order_to_order_list(self, order):
-        self.customer_list.add(order)
+        self.order_list.append(order)
         for item in order.lines:
             quantity_to_remove_from_inventory = item.quantity()
             item_name_to_remove = item.product_id()
@@ -87,7 +87,7 @@ class Server:
                 elif args[0] == 6:
                     client_socket.send(str(self.get_customer_from_name(args[1]).shopping_cart().get_total())
                                        .encode("UTF-16"))
-                elif args[0] ==7 :
+                elif args[0] ==7:
                     cart_to_remove_items = self.get_customer_from_name(args[1]).shopping_cart().get_cart_list();
                     for item_to_remove in cart_to_remove_items:
                         if item_to_remove.product_id() == args[2]:
