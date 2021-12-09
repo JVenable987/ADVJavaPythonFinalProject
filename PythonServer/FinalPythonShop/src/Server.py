@@ -65,6 +65,7 @@ class Server:
                 if args[0] == 0:
                     new_customer = Customer(args[1], args[2], args[3])
                     self.add_customer_to_customer_list(new_customer)
+                    client_socket.send("customer added".encode("UTF-16"))
                 elif args[0] == 1:
                     check_out_customer = self.get_customer_from_name(args[1])
                     order = check_out_customer.checkout(self.order_number_ticker)
