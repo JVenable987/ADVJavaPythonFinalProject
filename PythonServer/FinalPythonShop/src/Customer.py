@@ -1,7 +1,7 @@
 # class Customer, interacts with the ShoppingCart, add items to his/her ShoppingCart
-
+from datetime import date
 import ShoppingCart
-
+import Order
 class Customer:
     #userName = ""
     #password = ""
@@ -14,6 +14,13 @@ class Customer:
         self._password = password
         self._is_stocker = is_stocker
         self._shopping_cart = shopping_cart
+
+    def checkout(self, order_number):
+        order = Order(order_number, date.today())
+        for item in self.shopping_cart:
+            order.add_item_to_order(item)
+        self._shopping_cart = ShoppingCart()
+        return order
 
     @property
     def username(self):

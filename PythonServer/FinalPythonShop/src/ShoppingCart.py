@@ -13,7 +13,7 @@ class ShoppingCart:
     def __init__(self):
         self.cartList = list   #// assumed to have a capacity of 100 items
 
-    def getCartList(self):
+    def get_cart_list(self):
         return self.cartList
 
     #// No methods for appending/adding to the cartList added as of yet or toString to check if the items accurately added

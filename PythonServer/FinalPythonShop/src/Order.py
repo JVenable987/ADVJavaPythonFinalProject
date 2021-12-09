@@ -19,6 +19,9 @@ class Order:
             total += ol.subTotal()
         return total
 
+    def add_item_to_order(self, item):
+        self._lines.add(item)
+
     def ___str__(self):
         # todo: make sure this works
         sb = ""
