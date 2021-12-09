@@ -1,6 +1,6 @@
 # class Customer, interacts with the ShoppingCart, add items to his/her ShoppingCart
 from datetime import date
-import ShoppingCart
+from ShoppingCart import ShoppingCart
 import Order
 class Customer:
     #userName = ""
@@ -9,11 +9,11 @@ class Customer:
     #private ShoppingCart shoppingCart;
 
     # Customer constructor
-    def __init__(self, username: str, password: str, is_stocker: bool, shopping_cart: ShoppingCart):
+    def __init__(self, username: str, password: str, is_stocker: bool):
         self._username = username
         self._password = password
         self._is_stocker = is_stocker
-        self._shopping_cart = shopping_cart
+        self._shopping_cart = ShoppingCart()
 
     def checkout(self, order_number):
         order = Order(order_number, date.today())
