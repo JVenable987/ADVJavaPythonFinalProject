@@ -27,7 +27,7 @@ class Customer:
 
     @property
     def username(self):
-        return self._userName
+        return self._username
 
     @username.setter
     def username(self, username: str):
@@ -51,7 +51,7 @@ class Customer:
 
     @property
     def shopping_cart(self):
-        return self._shoppingCart
+        return self._shopping_cart
 
     @shopping_cart.setter
     def shopping_cart(self, shopping_cart: ShoppingCart):

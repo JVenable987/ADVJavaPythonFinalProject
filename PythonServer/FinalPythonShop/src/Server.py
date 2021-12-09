@@ -3,6 +3,7 @@ from Catalog import Catalog
 from Customer import Customer
 from Item import Item
 from Order import Order
+import copy
 
 
 class Server:
@@ -74,12 +75,14 @@ class Server:
                     self.add_order_to_order_list(order)
                 elif int(args[0]) == 2:
                     customer_to_add_to_cart = self.get_customer_from_name(args[1])
-                    item_to_add = Item()
-                    item_to_add = self.get_item_from_id(args[2])
-                    item_to_add.quantity(args[3])
+                    #item_to_add = Item()
+                    item_to_add = copy.copy(self.get_item_from_id(int(args[2])))
+                    print(str(item_to_add))
+                    item_to_add._quantity = (int(args[3]))
                     customer_to_add_to_cart.shopping_cart.add_item_to_cart(item_to_add)
+                    client_socket.send("item added to cart".encode("UTF-16"))
                 elif int(args[0]) == 3:
-                    item_to_add_to_catalog = Item(args[1], args[2], args[3], args[4], args[5], args[6], args[7])
+                    item_to_add_to_catalog = Item(args[1], int(args[2]), args[3], int(args[4]), float(args[5]), args[6], args[7])
                     self.catalog.add_item(item_to_add_to_catalog)
                     client_socket.send("item added".encode("UTF-16"))
                 elif int(args[0]) == 4:
@@ -87,14 +90,16 @@ class Server:
                         client_socket.send(str(item).encode("UTF-16"))
                 elif int(args[0]) == 5:
                     self.get_customer_from_name(args[1]).empty_shopping_cart()
+                    client_socket.send("cart emptied".encode("UTF-16"))
                 elif int(args[0]) == 6:
-                    client_socket.send(str(self.get_customer_from_name(args[1]).shopping_cart().get_total())
+                    client_socket.send(str(self.get_customer_from_name(args[1]).shopping_cart.get_total())
                                        .encode("UTF-16"))
                 elif int(args[0]) ==7:
-                    cart_to_remove_items = self.get_customer_from_name(args[1]).shopping_cart().get_cart_list();
+                    cart_to_remove_items = self.get_customer_from_name(args[1]).shopping_cart.get_cart_list();
                     for item_to_remove in cart_to_remove_items:
-                        if item_to_remove.product_id() == args[2]:
-                            item_to_remove.quantity(item_to_remove.quantity() - args[3])
+                        if item_to_remove.product_id == int(args[2]):
+                            new_quantity = item_to_remove.quantity - int(args[3])
+                            item_to_remove._quantity = new_quantity
                             client_socket.send("items removed".encode("UTF-16"))
 
 

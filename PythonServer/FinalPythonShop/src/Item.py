@@ -37,7 +37,7 @@ class Item:
         return self._quantity
 
     @quantity.setter
-    def quantity(self, the_quantity):
+    def quantity(self, the_quantity : int):
         """Set the quantity"""
         if the_quantity >= 0:
             self._quantity = the_quantity

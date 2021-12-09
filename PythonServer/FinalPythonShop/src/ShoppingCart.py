@@ -7,11 +7,11 @@
 
 class ShoppingCart:
     #// thinking if we should have a cartID? for that unique cart?
-    cartList = list()       #// list of Items
+         #// list of Items
 
     #//Constructor for ShoppingCart
     def __init__(self):
-        self.cartList = list   #// assumed to have a capacity of 100 items
+        self.cartList = []   #// assumed to have a capacity of 100 items
 
     def add_item_to_cart(self, item):
         self.cartList.append(item)
