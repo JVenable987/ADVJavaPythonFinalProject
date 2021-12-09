@@ -2,8 +2,9 @@
 
 class Item:
     # add stockerAdded: Stocker after, productID if we decide to put that in
-    def __init__(self, product_id: int, type: str, quantity: int,
+    def __init__(self, name: str, product_id: int, type: str, quantity: int,
                  price: float, manufacturer: str, model: str):
+        self._name = name
         self._product_id = product_id
         #self._stockerAdded = stockerAdded
         self._type = type
@@ -12,6 +13,15 @@ class Item:
         self._manufacturer = manufacturer
         self._model = model
 
+    @property
+    def name(self):
+        """Return the item's name"""
+        return self._name
+    
+    @name.setter
+    def name(self, name: str)
+        self._name = name
+        
     @property
     def product_id(self):
         """Return the product_id"""
@@ -60,5 +70,5 @@ class Item:
 
     def __str__(self):
         """String representation of an Item object"""
-        return "ITEM: [ID: {} | Type: {} | Quantity: {} | Price: {} | Manufacturer: {} | Model: {}]".format(
-            self._product_id, self._type, self._quantity, self._price, self._manufacturer, self._model)
+        return "ITEM: [ItemName: {} | ID: {} | Type: {} | Quantity: {} | Price: {} | Manufacturer: {} | Model: {}]".format(
+            self._name, self._product_id, self._type, self._quantity, self._price, self._manufacturer, self._model)
