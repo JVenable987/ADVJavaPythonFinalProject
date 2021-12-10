@@ -57,14 +57,15 @@ class ClientWorker(Thread):
         while self.__keep_running:
             client_message = self.__client_socket.recv(1024).decode("UTF-8")
             print(client_message)
+            client_message = client_message.strip()
             args = client_message.split("|")
             print(args[0])
             self.__lock.acquire()
-            if "QUIT" in client_message:
+            if "QUIT" == client_message:
                 print("QUIT\n")
                 self.__keep_running = False
                 #self.__client_socket.send("OK".encode("UTF-8"))
-            elif "TERMINATE" in client_message:
+            elif "TERMINATE" == client_message:
                 print("TERMINATE\n")
                 self.__keep_running = False
                 #self.__client_socket.send("OK".encode("UTF-8"))

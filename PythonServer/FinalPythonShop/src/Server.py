@@ -72,7 +72,6 @@ class Server:
             except(socket.timeout):
                 pass
 
-        print("Removing threads(if slowly)")
         for connection in self.connectionList:
             connection.terminate()
             #connection.join()

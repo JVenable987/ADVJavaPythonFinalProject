@@ -1,0 +1,1 @@
+In this folder, drop images to put onto the GUI, etc

@@ -1,3 +1,5 @@
+// Main allows us to run the MVC
+
 package application;
 
 import javafx.application.Application;
@@ -7,21 +9,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-//By Joshua Venable
-//Use this for main function, not MainApp
-
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("application.fxml"));
-        primaryStage.setTitle("Shop");
+        primaryStage.setTitle("Catalog Application");
         primaryStage.setScene(new Scene(root, 1080, 720));
         primaryStage.show();
 
-        primaryStage.setOnCloseRequest(e->{
-            Platform.exit();
-            System.exit(0);
+
+        primaryStage.setOnCloseRequest( e-> {   // for the exit button, to actually close the application
+            Platform.exit();            // closing JavaFx window
+            System.exit(0);      // closing the system
         });
     }
 
