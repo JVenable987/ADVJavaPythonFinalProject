@@ -3,7 +3,10 @@ from Catalog import Catalog
 from Customer import Customer
 from Item import Item
 from Order import Order
+from ClientWorker import ClientWorker
 import copy
+from threading import Lock
+
 
 
 class Server:
@@ -17,9 +20,10 @@ class Server:
         self.customer_list = []
         self.order_list = []
         self.order_number = 0
+        self.connectionList = []
 
     def add_customer_to_customer_list(self, customer):
-        self.customer_list.append(customer);
+        self.customer_list.append(customer)
 
     def add_order_to_order_list(self, order):
         self.order_list.append(order)
@@ -41,80 +45,31 @@ class Server:
                 return item
 
 
-    def order_number_ticker(self ):
+    def order_number_ticker(self):
         this_order_number = self.order_number
         self.order_number = self.order_number + 1
         return this_order_number
+
+    def terminate(self):
+        self.__keep_running = False
 
     def run(self):
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server_socket.bind( (self.__ip, self.__port) )
         server_socket.listen(self.__backlog)
 
+        lock = Lock()
         while self.__keep_running:
             print(f"""[SRV] Waiting for Client""")
             client_socket, client_address = server_socket.accept()
             print(f"""Got a connection from {client_address}""")
+            cw = ClientWorker(self, client_socket, client_address, lock)
+            self.connectionList.append(cw)
+            cw.start()
 
-            client_socket.send("Connected to Python Echo Server".encode("UTF-16"))
-
-            client_runs = True
-            while client_runs:
-                client_message = client_socket.recv(1024).decode("UTF-16")
-                print(client_message)
-                args = client_message.split("|")
-                print(args[0])
-                if int(args[0]) == 0:
-                    new_customer = Customer(args[1], args[2], args[3])
-                    self.add_customer_to_customer_list(new_customer)
-                    client_socket.send("customer added".encode("UTF-16"))
-                elif int(args[0]) == 1:
-                    check_out_customer = self.get_customer_from_name(args[1])
-                    order = check_out_customer.checkout(self.order_number_ticker)
-                    client_socket.send(order.order_number)
-                    self.add_order_to_order_list(order)
-                elif int(args[0]) == 2:
-                    customer_to_add_to_cart = self.get_customer_from_name(args[1])
-                    #item_to_add = Item()
-                    item_to_add = copy.copy(self.get_item_from_id(int(args[2])))
-                    print(str(item_to_add))
-                    item_to_add._quantity = (int(args[3]))
-                    customer_to_add_to_cart.shopping_cart.add_item_to_cart(item_to_add)
-                    client_socket.send("item added to cart".encode("UTF-16"))
-                elif int(args[0]) == 3:
-                    item_to_add_to_catalog = Item(args[1], int(args[2]), args[3], int(args[4]), float(args[5]), args[6], args[7])
-                    self.catalog.add_item(item_to_add_to_catalog)
-                    client_socket.send("item added".encode("UTF-16"))
-                elif int(args[0]) == 4:
-                    for item in self.catalog.items:
-                        client_socket.send(str(item).encode("UTF-16"))
-                elif int(args[0]) == 5:
-                    self.get_customer_from_name(args[1]).empty_shopping_cart()
-                    client_socket.send("cart emptied".encode("UTF-16"))
-                elif int(args[0]) == 6:
-                    client_socket.send(str(self.get_customer_from_name(args[1]).shopping_cart.get_total())
-                                       .encode("UTF-16"))
-                elif int(args[0]) ==7:
-                    cart_to_remove_items = self.get_customer_from_name(args[1]).shopping_cart.get_cart_list();
-                    for item_to_remove in cart_to_remove_items:
-                        if item_to_remove.product_id == int(args[2]):
-                            new_quantity = item_to_remove.quantity - int(args[3])
-                            item_to_remove._quantity = new_quantity
-                            client_socket.send("items removed".encode("UTF-16"))
-
-
-
-
-                if client_message == "QUIT":
-                    client_runs = False
-                    client_socket.send("OK".encode("UTF-16"))
-                elif client_message == "TERMINATE":
-                    client_runs = False
-                    self.__keep_running = False
-                    client_socket.send("OK".encode("UTF-16"))
-                #else:
-                    #client_socket.send(client_message.upper().encode("UTF-16"))
-
-            client_socket.close()
-
+        print("Removing threads(if slowly)")
+        for connection in self.connectionList:
+            connection.terminate()
+            connection.join()
+        print("Shutting down Server")
         server_socket.close()
