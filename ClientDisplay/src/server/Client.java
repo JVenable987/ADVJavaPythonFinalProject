@@ -22,7 +22,7 @@ public class Client {
         BufferedReader input = null;
         try {
             serverConnection = new Socket(host, portNum);
-            output = new PrintWriter(serverConnection.getOutputStream(), true);
+            output = new PrintWriter(serverConnection.getOutputStream());
             input = new BufferedReader(new InputStreamReader(serverConnection.getInputStream()));
             Scanner scanner = new Scanner(System.in);
             boolean keepRunning = true;
@@ -32,11 +32,14 @@ public class Client {
                 String clientMessage = scanner.nextLine();
                 System.out.println("Client SAID>>>" + clientMessage);
                 output.println(clientMessage);
-                if (clientMessage.equals("TERMINATE") || clientMessage.equals("QUIT")){
+                output.flush();
+                if (clientMessage.trim().equals("TERMINATE") || clientMessage.trim().equals("QUIT")){
                     keepRunning = false;
                 }
-                String serverMessage = input.readLine();
-                output.println("Server SAID>>>" + serverMessage);
+                else {
+                    String serverMessage = input.readLine();
+                    output.println("Server SAID>>>" + serverMessage);
+                }
                 //output.println("Hello from the client.");
                 //output.flush();
 
