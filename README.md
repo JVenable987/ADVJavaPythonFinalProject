@@ -1,5 +1,5 @@
 # **Advanced Programming w/ Java & Python FinalProject**
-### **Members**
+### **-Members**
 ```
 Bryan Heckman, Carlos Valdez, Joshua Venable
 ```
