@@ -1,6 +1,6 @@
 // class Item
 
-import edu.cudenver.university.Course;
+//import edu.cudenver.university.Course;
 
 public class Item {
     private int productID;                    // Haven't made const yet (static)
