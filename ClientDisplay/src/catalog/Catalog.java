@@ -1,4 +1,4 @@
-package edu.cudenver.catalog;
+package catalog;
 
 // Catalog contains all the Items in the system
 

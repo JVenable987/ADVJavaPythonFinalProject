@@ -1,4 +1,4 @@
-package edu.cudenver.catalog;
+package catalog;
 
 // class ShoppingCart
 // this object is composed of Item objects

@@ -1,4 +1,4 @@
-package edu.cudenver.catalog;
+package catalog;
 
 public class OrderLine {
     private Item item;

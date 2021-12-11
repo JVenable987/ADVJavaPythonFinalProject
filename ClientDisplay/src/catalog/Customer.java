@@ -1,4 +1,4 @@
-package edu.cudenver.catalog;
+package catalog;
 
 // class Customer, interacts with the ShoppingCart, add items to his/her ShoppingCart
 

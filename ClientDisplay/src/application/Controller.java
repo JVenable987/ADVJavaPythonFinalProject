@@ -1,6 +1,7 @@
 // The Controller will interact with the Model (where we add the code)
 
-package edu.cudenver.application;
+package application;
+import catalog.*;
 
 /*
 import edu.cudenver.catalog.Catalog;
@@ -11,7 +12,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
  */
 
-import edu.cudenver.catalog.*;
+import catalog.*;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.Event;

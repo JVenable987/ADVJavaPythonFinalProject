@@ -1,4 +1,4 @@
-package edu.cudenver.catalog;
+package catalog;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
