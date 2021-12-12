@@ -1,2 +1,10 @@
-In this file, Javier drops the university classes
-I am not sure if we need to do this with the catalog, please update
+Catalog package contains:
+
+----java classes----
+Catalog
+Customer
+Item
+Order
+OrderLine
+ShoppingCart
+--------------------

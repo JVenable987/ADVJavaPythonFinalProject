@@ -30,6 +30,7 @@
                           <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -37,19 +38,21 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Price:" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                              <Button fx:id="btnAddItem" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="123.0" text="Add Item" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-                              <TextField fx:id="txtItemId" prefHeight="25.0" prefWidth="434.0" GridPane.columnIndex="1" />
-                              <Label text="ID:" GridPane.halignment="CENTER" />
-                              <Label text="Type:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                              <TextField fx:id="txtItemType" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField fx:id="txtItemQuantity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Label text="Quantity:" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                              <Label text="Manufacturer:" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                              <Label text="Model:" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-                              <TextField fx:id="txtItemPrice" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <TextField fx:id="txtItemManufacturer" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <TextField fx:id="txtItemModel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Label text="Price:" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                              <Button fx:id="btnAddItem" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="123.0" text="Add Item" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+                              <TextField fx:id="txtItemId" prefHeight="25.0" prefWidth="434.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="ID:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <Label text="Type:" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtItemType" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtItemQuantity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label text="Quantity:" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                              <Label text="Manufacturer:" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                              <Label text="Model:" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                              <TextField fx:id="txtItemPrice" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="txtItemManufacturer" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtItemModel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Label text="Name:" GridPane.halignment="CENTER" />
+                              <TextField fx:id="txtItemName" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
                         <ImageView fitHeight="175.0" fitWidth="209.0" layoutX="184.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
@@ -73,16 +76,88 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Untitled Tab 3">
+          <Tab text="Add New Customer">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane layoutX="286.0" layoutY="127.0" prefHeight="234.0" prefWidth="517.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.0" minWidth="10.0" prefWidth="151.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="374.0" minWidth="10.0" prefWidth="366.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Username:" GridPane.halignment="CENTER" />
+                              <Label text="Password:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <Label text="Stocker?" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtUsernameTab3" GridPane.columnIndex="1" />
+                              <TextField fx:id="txtPasswordTab3" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button fx:id="btnAddTheCustomer" mnemonicParsing="false" onAction="#addCustomer" text="Add The Customer" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="txtStockerTab3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                        <Label layoutX="286.0" layoutY="103.0" text="Add New Customer" />
+                     </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Untitled Tab 4">
+          <Tab text="Display Shopping Cart">
              <content>
-               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane layoutX="151.0" layoutY="125.0" prefHeight="195.0" prefWidth="501.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="109.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="392.0" minWidth="10.0" prefWidth="392.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="145.0" minHeight="10.0" prefHeight="145.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Customer Name" />
+                              <TextField fx:id="txtCustomerName" GridPane.columnIndex="1" />
+                              <Button fx:id="btnShoppingCartSearch" mnemonicParsing="false" onAction="#findCustomer" text="Search" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <ListView fx:id="lstOfShoppingCartItems" layoutX="151.0" layoutY="370.0" prefHeight="200.0" prefWidth="650.0" />
+                        <Label layoutX="151.0" layoutY="340.0" text="Shopping Cart " />
+                     </children></AnchorPane>
              </content>
-          </Tab>  
+          </Tab>
+            <Tab text="Add Item to Customers Cart">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane layoutX="180.0" layoutY="157.0" prefHeight="266.0" prefWidth="639.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="315.0" minWidth="10.0" prefWidth="175.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="493.0" minWidth="10.0" prefWidth="464.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Customer Name:" GridPane.halignment="CENTER" />
+                              <Label text="Item ID:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <Label text="Quantity:" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <Button fx:id="btnAddItemTab5" mnemonicParsing="false" onAction="#addItemToCustomerCart" text="Add Item" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                              <TextField fx:id="txtCustomerNameTab5" GridPane.columnIndex="1" />
+                              <TextField fx:id="txtItemIdTab5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtQuantityTab5" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                        <Label layoutX="180.0" layoutY="114.0" text="Add Item to Customers Cart" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>  
         </tabs>
       </TabPane>
       <GridPane GridPane.rowIndex="1">

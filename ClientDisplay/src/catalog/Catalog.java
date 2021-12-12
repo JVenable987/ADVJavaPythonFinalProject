@@ -23,7 +23,7 @@ public class Catalog implements Serializable {
         this.items.add(item);
     }
 
-    public void addItem1(int id, String type, int quantity, double price, String manufacturer, String model) {
+    public void addItem1(String text, int id, String type, int quantity, double price, String manufacturer, String model) {
         this.items.add(new Item(id, type, quantity, price, manufacturer, model));
     }
 
